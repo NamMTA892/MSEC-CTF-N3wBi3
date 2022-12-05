@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  template_inj_level1:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: template_inj_level1
+    restart: unless-stopped
+    env_file:
+      - .env
+    command: ["sh", "-c", "pip install debugpy -t /tmp && python /tmp/debugpy --listen 0.0.0.0:35006 app.py --no-reload --no-debugger"]
+    ports:
+      - 0.0.0.0:6601:8000
+      - 35006:35006 # for DEBUG

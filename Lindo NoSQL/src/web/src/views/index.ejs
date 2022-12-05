@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Lindo Vlogs - Cuộc Sống ở Châu Phi</title>
+</head>
+
+<body>
+
+    <h1>Login vào để xem vlog cuộc sống tại Châu Phi của Lindo nhé =)))</h1>
+    <form action="/login" method="POST" onsubmit="submitform(event)">
+
+        <input type="text" name="username" placeholder="username" id="username">
+        <br><br>
+        <input type="password" name="password" placeholder="password" id="password">
+        <br><br>
+        <button>Login</button>
+
+    </form>
+
+    <div id="div1"></div>
+
+    <script>
+        function submitform(event) {
+            event.preventDefault();
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const data = {
+                username: username,
+                password: password
+            };
+            fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            }).then((response) => {
+                return response.text();
+            }).then((response) => {
+                document.getElementById("div1").innerText = response;
+            });
+        }
+    </script>
+
+</body>
+
+</html>

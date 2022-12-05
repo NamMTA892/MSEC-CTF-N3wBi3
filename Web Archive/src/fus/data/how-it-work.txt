@@ -1,0 +1,9 @@
+├── app.py
+├── fus
+│   └── data
+│       ├── how-it-work.txt
+│       ├── technology.txt
+│       └── this-is-flag.txt
+├── requirements.txt
+└── templates
+    └── index.html
